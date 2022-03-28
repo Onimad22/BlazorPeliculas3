@@ -1,4 +1,5 @@
 ﻿
+
 @if (Peliculas == null)
 {
     <text>Cargando...</text>
@@ -9,11 +10,13 @@ else if (Peliculas.Count == 0)
 }
 else
 {
+    <input type="checkbox" @onchange="@(()=>Mostrar=!Mostrar)" /><span>Mostrar botones</span>
+
     <div>
        
         @foreach (var item in Peliculas)
         {
-           <PeliculaIndividual Pelicula="item"/>
+           <PeliculaIndividual Pelicula="item" Mostrar="Mostrar"/>
         }
 
     </div>
@@ -22,6 +25,7 @@ else
 
 @code {
     [Parameter]public List<Pelicula> Peliculas{ get; set; }
+    private bool Mostrar;
 
     
 }
