@@ -1,7 +1,33 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<p2>Hola, @UtilidadesString.Enmayuscular(nombre)</p2>
 
-Welcome to your new app.
+<p>vamos a sumar 2 + 2= @(2+2)</p>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="ManejarClick">Presioname</button>
+
+<div>
+    <h3>Pelicula</h3>
+    <p>Titulo     : <b>@SpiderMan.Titulo</b></p>
+    <p>Lanzamiento: <b>@SpiderMan.Lanzamiento.ToShortDateString()</b></p>
+</div>
+
+@code {
+    private string nombre = "Felipe";
+    public Pelicula SpiderMan { get { return ObtenerPelicula(); } }
+
+    private Pelicula ObtenerPelicula()
+    {
+        return new Pelicula()
+            {
+                Titulo = "Spider-Man",
+                Lanzamiento = new DateTime(2019, 12, 23)
+            };
+    }
+
+    private void ManejarClick()
+    {
+        Console.WriteLine("Me han clickeado(desde metodo)");
+    }
+
+}
