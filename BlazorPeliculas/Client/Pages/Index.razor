@@ -1,67 +1,12 @@
 ﻿@page "/"
 
-<p2>Hola, @UtilidadesString.Enmayuscular(nombre)</p2>
+<h1>Peliculas</h1>
 
-<p>vamos a sumar 2 + 2= @(2+2)</p>
-
-<button @onclick="ManejarClick">Presioname</button>
-@if (Peliculas == null)
-{
-    <text>Cargando...</text>
-}
-else if (Peliculas.Count == 0)
-{
-    <text>No hay Peliculas para mostrar</text>
-}
-else
-{
-    <div>
-        <h3>Pelicula</h3>
-        @foreach (var item in ObtenerPeliculas())
-        {
-            <div>
-                <p>Titulo     : <b>@item.Titulo</b></p>
-                <p>Lanzamiento: <b>@item.Lanzamiento.ToShortDateString()</b></p>
-            </div>
-        }
-
-    </div>
-}
-
-
+<ListadoPeliculas></ListadoPeliculas>
 
 
 @code {
     private string nombre = "Felipe";
-    private Pelicula SpiderMan { get { return ObtenerPelicula(); } }
-    private List<Pelicula> Peliculas;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Task.Delay(5000);
-        Peliculas = ObtenerPeliculas();
-    }
-
-    private Pelicula ObtenerPelicula()
-    {
-        return new Pelicula()
-            {
-                Titulo = "Spider-Man",
-                Lanzamiento = new DateTime(2019, 12, 23)
-            };
-    }
-
-    private List<Pelicula> ObtenerPeliculas()
-    {
-        return new List<Pelicula>()
-
-        {
-            new Pelicula(){Titulo = "Spider-Man",Lanzamiento = new DateTime(2019, 12, 23)},
-            new Pelicula(){Titulo = "Moana",Lanzamiento = new DateTime(2019, 12, 23)},
-            new Pelicula(){Titulo = "Inception",Lanzamiento = new DateTime(2019, 12, 23)},
-        };
-    }
-
 
     private void ManejarClick()
     {

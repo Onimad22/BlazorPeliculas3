@@ -1,0 +1,45 @@
+﻿
+@if (Peliculas == null)
+{
+    <text>Cargando...</text>
+}
+else if (Peliculas.Count == 0)
+{
+    <text>No hay Peliculas para mostrar</text>
+}
+else
+{
+    <div>
+       
+        @foreach (var item in Peliculas)
+        {
+            <div>
+                <p>Titulo     : <b>@item.Titulo</b></p>
+                <p>Lanzamiento: <b>@item.Lanzamiento.ToString("dd MMM yyyy")</b></p>
+            </div>
+        }
+
+    </div>
+}
+
+
+@code {
+    private List<Pelicula> Peliculas;
+
+     protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(5000);
+        Peliculas = ObtenerPeliculas();
+    }
+
+     private List<Pelicula> ObtenerPeliculas()
+    {
+        return new List<Pelicula>()
+
+        {
+            new Pelicula(){Titulo = "Spider-Man",Lanzamiento = new DateTime(2019, 12, 23)},
+            new Pelicula(){Titulo = "Moana",Lanzamiento = new DateTime(2019, 12, 23)},
+            new Pelicula(){Titulo = "Inception",Lanzamiento = new DateTime(2019, 12, 23)},
+        };
+    }
+}
