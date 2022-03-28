@@ -10,7 +10,7 @@ else if (Peliculas.Count == 0)
 }
 else
 {
-    <input type="checkbox" @onchange="@(()=>Mostrar=!Mostrar)" /><span>Mostrar botones</span>
+    <input type="checkbox" @bind="Mostrar" /><span>Mostrar botones</span>
 
     <div>
        
@@ -25,7 +25,7 @@ else
 
 @code {
     [Parameter]public List<Pelicula> Peliculas{ get; set; }
-    private bool Mostrar;
+    private bool Mostrar=true;
 
     
 }
