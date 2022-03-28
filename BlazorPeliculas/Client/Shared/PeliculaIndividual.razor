@@ -1,23 +1,17 @@
 ﻿<div>
     <p>Titulo     : <b>@Pelicula.Titulo</b></p>
     <p>Lanzamiento: <b>@Pelicula.Lanzamiento.ToString("dd MMM yyyy")</b></p>
-    @if (Mostrar)
-    {
-        <div>
-            <button @onclick="Eliminar">Borrar</button>
-        </div>
-    }
+
+    <div>
+        <button @onclick="@(()=>EliminarPelicula.InvokeAsync(Pelicula))">Borrar</button>
+    </div>
+
 
 </div>
 
 @code {
     [Parameter] public Pelicula Pelicula { get; set; }
-    [Parameter] public bool Mostrar { get; set; } 
+    [Parameter] public EventCallback<Pelicula> EliminarPelicula { get; set; }
 
-    void Eliminar()
-    {
-        Console.WriteLine($"Eliminando pelicula {Pelicula.Titulo}");
-
-    }
 
 }

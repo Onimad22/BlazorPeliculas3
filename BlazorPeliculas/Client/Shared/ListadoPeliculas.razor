@@ -1,22 +1,36 @@
-﻿
-
-@if (Peliculas == null)
+﻿@if (Peliculas == null)
 {
-    <text>Cargando...</text>
+    @if (Cargando == null)
+    {
+        <text>Cargando...(ListadoPeliculas)</text>
+    }
+    else
+    {
+        @Cargando
+    }
 }
 else if (Peliculas.Count == 0)
 {
-    <text>No hay Peliculas para mostrar</text>
+    @if (NoHayPeliculas == null)
+    {
+        <text>No hay peliculas que mostrar(ListadoPeliculas)</text>
+    }
+    else
+    {
+        @NoHayPeliculas
+    }
 }
 else
 {
-    <input type="checkbox" @bind="Mostrar" /><span>Mostrar botones</span>
 
     <div>
-       
+
         @foreach (var item in Peliculas)
         {
-           <PeliculaIndividual Pelicula="item" Mostrar="Mostrar"/>
+            <PeliculaIndividual Pelicula="item"
+                        EliminarPelicula="EliminarPelicula">
+            </PeliculaIndividual>
+
         }
 
     </div>
@@ -24,8 +38,13 @@ else
 
 
 @code {
-    [Parameter]public List<Pelicula> Peliculas{ get; set; }
-    private bool Mostrar=true;
+    [Parameter] public List<Pelicula> Peliculas { get; set; }
+    [Parameter] public RenderFragment Cargando { get; set; }
+    [Parameter] public RenderFragment NoHayPeliculas { get; set; }
+    private bool Mostrar = true;
 
-    
+    void EliminarPelicula(Pelicula pelicula)
+    {
+        Peliculas.Remove(pelicula);
+    }
 }

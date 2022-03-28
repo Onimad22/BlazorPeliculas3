@@ -2,14 +2,23 @@
 
 <h1>Peliculas</h1>
 
-<ListadoPeliculas Peliculas="ObtenerPeliculas()"></ListadoPeliculas>
+<ListadoPeliculas Peliculas="ObtenerPeliculas()">
+
+    <Cargando>
+        <text>Cargando...(Index)</text>
+    </Cargando>
+    <NoHayPeliculas>
+        <text>No hay peliculas para mostrar(Index)</text>
+    </NoHayPeliculas>
+
+</ListadoPeliculas>
 
 
 
 @code {
     private string nombre = "Felipe";
 
-     private List<Pelicula> ObtenerPeliculas()
+    private List<Pelicula> ObtenerPeliculas()
     {
         return new List<Pelicula>()
 
@@ -20,6 +29,6 @@
         };
     }
 
-   
+
 
 }
