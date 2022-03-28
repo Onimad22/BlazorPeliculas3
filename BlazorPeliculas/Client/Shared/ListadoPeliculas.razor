@@ -1,46 +1,18 @@
-﻿@if (Peliculas == null)
-{
-    @if (Cargando == null)
-    {
-        <text>Cargando...(ListadoPeliculas)</text>
-    }
-    else
-    {
-        @Cargando
-    }
-}
-else if (Peliculas.Count == 0)
-{
-    @if (NoHayPeliculas == null)
-    {
-        <text>No hay peliculas que mostrar(ListadoPeliculas)</text>
-    }
-    else
-    {
-        @NoHayPeliculas
-    }
-}
-else
-{
+﻿
+<ListadoGenerico Listado="Peliculas">
+    <HayRegistros>
+        <PeliculaIndividual Pelicula="context"
+        EliminarPelicula="EliminarPelicula">
 
-    <div>
+        </PeliculaIndividual>
+    </HayRegistros>
+</ListadoGenerico>
+   
 
-        @foreach (var item in Peliculas)
-        {
-            <PeliculaIndividual Pelicula="item"
-                        EliminarPelicula="EliminarPelicula">
-            </PeliculaIndividual>
-
-        }
-
-    </div>
-}
 
 
 @code {
     [Parameter] public List<Pelicula> Peliculas { get; set; }
-    [Parameter] public RenderFragment Cargando { get; set; }
-    [Parameter] public RenderFragment NoHayPeliculas { get; set; }
     private bool Mostrar = true;
 
     void EliminarPelicula(Pelicula pelicula)
