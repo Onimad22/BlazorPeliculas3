@@ -3,7 +3,7 @@
 {
     @if (Cargando == null)
     {
-        <text>Cargando...(ListadoPeliculas)</text>
+        <text>Cargando...(ListadoGenerico)</text>
     }
     else
     {
@@ -14,7 +14,7 @@ else if (Listado.Count == 0)
 {
     @if (NoHayPeliculas == null)
     {
-        <text>No hay peliculas que mostrar(ListadoPeliculas)</text>
+        <text>No hay peliculas que mostrar(ListadoGenerico)</text>
     }
     else
     {
@@ -23,7 +23,7 @@ else if (Listado.Count == 0)
 }
 else
 {
-    foreach(var item in Listado)
+    foreach (var item in Listado)
     {
         @HayRegistros(item)
     }
@@ -33,6 +33,6 @@ else
 @code {
     [Parameter] public RenderFragment Cargando { get; set; }
     [Parameter] public RenderFragment NoHayPeliculas { get; set; }
-    [Parameter] public List<Titem> Listado{ get; set; }
-    [Parameter] public RenderFragment<Titem>HayRegistros{ get; set; }
+    [Parameter] public List<Titem> Listado { get; set; }
+    [Parameter] public RenderFragment<Titem> HayRegistros { get; set; }
 }

@@ -2,18 +2,15 @@
 
 <h1>Peliculas</h1>
 
-<ListadoPeliculas Peliculas="ObtenerPeliculas()">
-
-</ListadoPeliculas>
-
+<ListadoPeliculas Peliculas="Peliculas" />
 
 
 @code {
-    private string nombre = "Felipe";
+    private List<Pelicula> Peliculas;
 
-    private List<Pelicula> ObtenerPeliculas()
+    protected override void OnInitialized()
     {
-        return new List<Pelicula>()
+        Peliculas= new List<Pelicula>()
 
         {
             new Pelicula(){Titulo = "Spider-Man",Lanzamiento = new DateTime(2019, 12, 23)},
@@ -21,7 +18,6 @@
             new Pelicula(){Titulo = "Inception",Lanzamiento = new DateTime(2019, 12, 23)},
         };
     }
-
-
+   
 
 }
