@@ -1,4 +1,5 @@
-﻿
+﻿@inject IJSRuntime js
+
 <ListadoGenerico Listado="Peliculas">
     <HayRegistros>
         <PeliculaIndividual Pelicula="context"
@@ -12,8 +13,14 @@
     [Parameter] public List<Pelicula> Peliculas { get; set; }
     private bool Mostrar = true;
 
-    void EliminarPelicula(Pelicula pelicula)
+    async Task EliminarPelicula(Pelicula pelicula)
     {
-        Peliculas.Remove(pelicula);
+        var confirmado = await js.Confirm($"Desea borrar la pelicula {pelicula.Titulo}");
+       
+
+        if (confirmado)
+        {
+             Peliculas.Remove(pelicula);
+        }
     }
 }
