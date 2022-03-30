@@ -1,3 +1,4 @@
+using BlazorPeliculas.Client.Repositorios;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,8 +27,8 @@ namespace BlazorPeliculas.Client
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ServicioSingleton>();
-            services.AddTransient<ServicioTransient>();
+            services.AddSingleton<IRepositorio,Repositorio>();
+            
         }
     }
 }
