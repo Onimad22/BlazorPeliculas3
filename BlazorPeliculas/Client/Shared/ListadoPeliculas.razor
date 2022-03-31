@@ -1,5 +1,6 @@
 ﻿@inject IJSRuntime js
 
+<div class="tarjeta">
 <ListadoGenerico Listado="Peliculas">
     <HayRegistros>
         <PeliculaIndividual Pelicula="context"
@@ -9,37 +10,21 @@
     </HayRegistros>
 </ListadoGenerico>
 
+</div>
 
-<Confirmacion @ref="componente" onCancel="OnCancel" onConfirm="OnConfirm">
-    <p>Desea borrar la pelicula:@PeliculaABorrar.Titulo ?</p>
-</Confirmacion>
+
 
 @code {
-    Confirmacion componente;
     [Parameter] public List<Pelicula> Peliculas { get; set; }
-    public Pelicula PeliculaABorrar; 
 
     async Task EliminarPelicula(Pelicula pelicula)
     {
-        componente.Mostrar();
-        //var confirmado = await js.Confirm($"Desea borrar la pelicula {pelicula.Titulo}");
-        //if (confirmado)
-        //{
-        //     Peliculas.Remove(pelicula);
-        //}
-        PeliculaABorrar = pelicula;
+        var confirmado = await js.Confirm($"Desea borrar la pelicula {pelicula.Titulo}");
+        if (confirmado)
+        {
+             Peliculas.Remove(pelicula);
+        }
     }
 
-    void OnCancel()
-    {
-        componente.Ocultar();
-        PeliculaABorrar = null;
-    }
-    void OnConfirm()
-    {
-        Peliculas.Remove(PeliculaABorrar);
-        PeliculaABorrar = null;
-        componente.Ocultar();
-    }
 
 }

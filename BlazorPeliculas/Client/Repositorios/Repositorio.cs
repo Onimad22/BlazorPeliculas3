@@ -11,9 +11,9 @@ namespace BlazorPeliculas.Client.Repositorios
             return new List<Pelicula>()
 
         {
-            new Pelicula(){Titulo = "Spider-Man",Lanzamiento = new DateTime(2019, 12, 23)},
-            new Pelicula(){Titulo = "Moana",Lanzamiento = new DateTime(2019, 12, 23)},
-            new Pelicula(){Titulo = "Inception",Lanzamiento = new DateTime(2019, 12, 23)},
+            new Pelicula(){Titulo = "Spider-Man",Lanzamiento = new DateTime(2019, 12, 23),Poster="img/spider.jpg"},
+            new Pelicula(){Titulo = "Moana",Lanzamiento = new DateTime(2019, 12, 23),Poster="img/moana.jpg"},
+            new Pelicula(){Titulo = "Inception",Lanzamiento = new DateTime(2019, 12, 23),Poster="img/inception.jpg"},
         };
         }
     }

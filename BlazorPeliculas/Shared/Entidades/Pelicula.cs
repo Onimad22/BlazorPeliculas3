@@ -10,5 +10,6 @@ namespace BlazorPeliculas.Shared.Entidades
     {
         public string Titulo { get; set; }
         public DateTime Lanzamiento { get; set; }
+        public string Poster { get; set; }
     }
 }

@@ -1,11 +1,15 @@
-﻿<div>
-    <p>Titulo     : <b>@Pelicula.Titulo</b></p>
-    <p>Lanzamiento: <b>@Pelicula.Lanzamiento.ToString("dd MMM yyyy")</b></p>
+﻿<div class="poster">
+    <a>
+        <img class="poster-img" src="@Pelicula.Poster" alt="Poster"/>
+    </a>
+
+    <p class="poster-titulo">@Pelicula.Titulo</p>
 
     <div>
-        <button @onclick="@(()=>EliminarPelicula.InvokeAsync(Pelicula))">Borrar</button>
+        <a class="btn btn-info">Editar</a>
+        <button type="button" class="btn btn-danger" 
+        @onclick="@(()=>EliminarPelicula.InvokeAsync(Pelicula))">Borrar</button>
     </div>
-
 
 </div>
 
