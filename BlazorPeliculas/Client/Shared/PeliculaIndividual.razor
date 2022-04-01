@@ -1,19 +1,25 @@
 ﻿<div class="poster">
-    <a>
+    <a href="@urlPelicula">
         <img class="poster-img" src="@Pelicula.Poster" alt="Poster"/>
-    </a>
-
+     </a>
+<a href="@urlPelicula">
     <p class="poster-titulo">@Pelicula.Titulo</p>
-
+    </a>
     <div>
         <a class="btn btn-info">Editar</a>
         <button type="button" class="btn btn-danger" 
         @onclick="@(()=>EliminarPelicula.InvokeAsync(Pelicula))">Borrar</button>
     </div>
-
+    
 </div>
 
 @code {
     [Parameter] public Pelicula Pelicula { get; set; }
     [Parameter] public EventCallback<Pelicula> EliminarPelicula { get; set; }
+    private string urlPelicula=string.Empty;
+
+    protected override void OnInitialized()
+    {
+        urlPelicula = $"/pelicula";
+    }
 }
