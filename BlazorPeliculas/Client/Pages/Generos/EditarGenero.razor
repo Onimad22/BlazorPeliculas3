@@ -2,7 +2,22 @@
 
 <h3>EditarGenero</h3>
 
+
+<FormularioGenero Genero="Genero" Guardar="Editar"/>
+
 @code {
     [Parameter]
     public int GeneroId { get; set; }
+    private Genero Genero;
+
+    protected override void OnInitialized()
+    {
+        Genero = new Genero() { Id = 1, Nombre = "Comedia" };
+        
+    }
+
+    void Editar()
+    {
+        Console.WriteLine($"Guardando Id {GeneroId} nombre:{Genero.Nombre}");
+    }
 }
